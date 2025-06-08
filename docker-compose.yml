@@ -1,0 +1,15 @@
+
+services:
+  codrr_pg:
+    image: postgres:latest
+    container_name: codrr_pg
+    restart: always
+    environment:
+      - POSTGRES_DB=codrrdb
+      - POSTGRES_USER=ucodrr
+      - POSTGRES_PASSWORD=secret1234 
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+      
