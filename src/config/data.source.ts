@@ -17,6 +17,7 @@ export const DataSourceConfig: DataSourceOptions = {
     type: 'postgres',
     host: configService.get('DB_HOST'),
     port: parseInt(configService.get('DB_PORT') || '5432', 10),//robusto
+    username: configService.get('DB_USER'),
     password: configService.get('DB_PASSWORD'),
     database: configService.get('DB_NAME'),
     entities: [__dirname +'/../**/**/*.entity{.ts,.js}'],
@@ -27,5 +28,5 @@ export const DataSourceConfig: DataSourceOptions = {
     namingStrategy: new SnakeNamingStrategy(),
 };
 
-export const AppDS = new DataSource(DataSourceConfig);
+const AppDS = new DataSource(DataSourceConfig);
 export default AppDS;
